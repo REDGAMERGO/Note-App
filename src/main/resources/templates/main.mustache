@@ -1,0 +1,63 @@
+<html>
+<body>
+<!--Выход из профиля-->
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+<!--Раздел категорий-->
+<div>КАТЕГОРИИ</div>
+<br>
+<div>
+    <form method="post" action="addCategory">
+        <input type="text" name="name" placeholder="Введите название категории" />
+        <input type="text" name="description" placeholder="Описание">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>Список категорий</div>
+<form method="post" action="getAllCategory"></form>
+{{#categories}}
+    <div>
+        <b>ID: </b><span>{{id}}</span>
+        <b>Название: </b><span>{{name}}</span>
+        <b>Описание: </b><span>{{desc}}</span>
+    </div>
+{{/categories}}
+
+
+<!--Раздел заметок-->
+<br>
+<div>ЗАМЕТКИ</div>
+<br>
+<div>
+    <form method="post" action="addNote">
+        <input type="text" name="text" placeholder="Введите текст заметки" />
+        <input type="text" name="tag" placeholder="Тэг">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>Список заметок</div>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Найти</button>
+</form>
+{{#notes}}
+    <div>
+        <b>ID: </b><span>{{id}}</span>
+        <b>Текст: </b><span>{{text}}</span>
+        <b>Категория(и): </b><span>{{tag}}</span>
+        <b>Время: </b><span>{{time}}</span>
+    </div>
+{{/notes}}
+
+</body>
+</html>
