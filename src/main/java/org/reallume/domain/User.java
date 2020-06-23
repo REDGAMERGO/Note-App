@@ -17,6 +17,12 @@ public class User implements UserDetails {
     private String password;
     private  boolean active;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Note> notes;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Category> categories;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -86,4 +92,12 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    public Set<Note> getNotes() { return notes; }
+
+    public void setNotes(Set<Note> notes) { this.notes = notes; }
+
+    public Set<Category> getCategories() { return categories; }
+
+    public void setCategories(Set<Category> categories) { this.categories = categories; }
 }

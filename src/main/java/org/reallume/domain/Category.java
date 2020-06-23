@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Category {
@@ -21,8 +22,8 @@ public class Category {
     private User author;
 
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Note> notes;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Note> notes;
 
     public Category() {
     }
@@ -44,9 +45,9 @@ public class Category {
 
     public void setAuthor(User author) { this.author = author; }
 
-    public List<Note> getNotes() { return notes; }
+    public Set<Note> getNotes() { return notes; }
 
-    public void setNotes(List<Note> notes) { this.notes = notes; }
+    public void setNotes(Set<Note> notes) { this.notes = notes; }
 
     public Category getSelf() { return this;}
 
