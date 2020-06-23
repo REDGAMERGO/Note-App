@@ -7,5 +7,11 @@ import org.reallume.domain.Category;
 import java.util.List;
 
 public interface CategoryRepo extends CrudRepository<Category, Long> {
-    List<Category> findByName(String name);
+
+    Category findByName(String name);
+
+    Category findById(Integer category_id);
+
+    void deleteById(Integer item_id);
+
 }

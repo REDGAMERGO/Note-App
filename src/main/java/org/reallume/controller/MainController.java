@@ -2,9 +2,11 @@ package org.reallume.controller;
 
 import org.reallume.domain.Category;
 import org.reallume.domain.Note;
+import org.reallume.domain.User;
 import org.reallume.repos.CategoryRepo;
 import org.reallume.repos.NoteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String greeting(Map<String, Object> model){
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
 
@@ -38,55 +40,43 @@ public class MainController {
 
 
     @PostMapping("addNote")
-    public String addNote(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
-        Note note = new Note(text, tag);
+    public String addNote(@AuthenticationPrincipal User user,
+                          @RequestParam String text,
+                          @RequestParam Integer category, Map<String, Object> model) {
 
-        noteRepo.save(note);
+        if (text != null && !text.isEmpty() && user != null) {
 
-        Iterable<Note> notes = noteRepo.findAll();
+            Note note = new Note(text, categoryRepo.findById(category), user);
 
-        model.put("notes", notes);
+            noteRepo.save(note);
 
-        return "main";
+            Iterable<Note> notes = noteRepo.findAll();
+
+            model.put("notes", notes);
+
+        }
+        return "redirect:/main";
     }
 
     @PostMapping("addCategory")
-    public String addCategory(@RequestParam String name, @RequestParam String description, Map<String, Object> model) {
-        Category category = new Category(name, description);
+    public String addCategory(@AuthenticationPrincipal User user,
+                              @RequestParam String name, Map<String, Object> model) {
+        if (name != null && !name.isEmpty() && user != null) {
+            Category category = new Category(name, user);
 
-        categoryRepo.save(category);
+            categoryRepo.save(category);
 
-        Iterable<Category> categories = categoryRepo.findAll();
+            Iterable<Category> categories = categoryRepo.findAll();
 
-        model.put("categories", categories);
+            model.put("categories", categories);
 
-        return "main";
-    }
-
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model) {
-        Iterable<Note> notes;
-
-        if (filter != null && !filter.isEmpty()) {
-            notes = noteRepo.findByTag(filter);
-        } else {
-            notes = noteRepo.findAll();
         }
+        return "redirect:/main";
 
-        model.put("notes", notes);
 
-        return "main";
+
     }
 
-    @PostMapping("getAllCategory")
-    public String getAllCategory(Map<String, Object> model) {
-        Iterable<Category> categories;
 
-        categories = categoryRepo.findAll();
-
-        model.put("categories",categories);
-
-        return "main";
-    }
 
 }

@@ -10,11 +10,10 @@ public class Note {
     private Integer id;
 
     private String text;
-    private String tag;
     private Date time;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User author;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -24,10 +23,12 @@ public class Note {
     public Note() {
     }
 
-    public Note(String text, String tag) {
+    public Note(String text, Category category, User user) {
         this.text = text;
-        this.tag = tag;
+        this.category = category;
         this.time = new Date();
+        this.author = user;
+        this.category = category;
     }
 
     public void setText(String text) {
@@ -46,12 +47,12 @@ public class Note {
         this.id = id;
     }
 
-    public String getTag() {
-        return tag;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Date getTime() { return time; }
