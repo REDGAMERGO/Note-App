@@ -2,12 +2,17 @@
 <#import "parts/login.ftlh" as l>
 
 <@c.page>
+    <!--Выход из профиля-->
     <div>
-        <!--Выход из профиля-->
         <@l.logout />
     </div>
     <br>
 
+    <!--Лист профилей-->
+    <div>
+        <span><a href="/user">User list</a></span>
+    </div>
+    <br>
 
     <!--Раздел категорий-->
     <table border="1" >
