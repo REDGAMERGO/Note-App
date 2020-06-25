@@ -1,36 +1,26 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
 
 <@c.page>
-    <!--Выход из профиля-->
-    <div>
-        <@l.logout />
-    </div>
-    <br>
 
-    <!--Лист профилей-->
-    <div>
-        <span><a href="/user">User list</a></span>
-    </div>
-    <br>
 
     <!--Раздел категорий-->
-    <table border="1" >
-        <tr>
-            <th>Категория</th>
-            <th>Пользователь</th>
-        </tr>
-        <tr>
-            <#list categories as category>
-                <tr>
-                    <td> ${category.getName()}</td>
-                    <td> ${category.getAuthor().getUsername()}</td>
-                </tr>
-            <#else>
-                    No notes
-            </#list>
-        </tr>
-
+    <table class="table table-bordered" >
+        <thead>
+            <tr>
+                <th>Категория</th>
+                <th>Пользователь</th>
+            </tr>
+        </thead>
+        <tbody>
+                <#list categories as category>
+                    <tr>
+                        <td> ${category.getName()}</td>
+                        <td> ${category.getAuthor().getUsername()}</td>
+                    </tr>
+                <#else>
+                        No notes
+                </#list>
+        <tbody>
     </table>
 
 <br>
@@ -46,7 +36,7 @@
     <!--Раздел заметок-->
     <br>
 
-    <table border="1" >
+    <table class="table table-bordered" >
         <tr>
             <th>Текст</th>
             <th>Категория</th>

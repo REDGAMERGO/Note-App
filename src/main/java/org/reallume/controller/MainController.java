@@ -21,10 +21,9 @@ public class MainController {
     @Autowired
     private CategoryRepo categoryRepo;
 
-
     @GetMapping("/")
-    public String greeting(Map<String, Object> model) {
-        return "greeting";
+    public String enter(Map<String, Object> model) {
+        return "redirect:/main";
     }
 
     @GetMapping("/main")
