@@ -1,2 +1,0 @@
-<#include "parts/security.ftlh">
-

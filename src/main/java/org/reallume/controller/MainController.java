@@ -34,7 +34,7 @@ public class MainController {
         model.put("categories", categories);
         model.put("notes", notes);
 
-        return "main";
+        return "common/main";
     }
 
 

@@ -17,7 +17,7 @@ public class RegistrationController {
     private UserRepo userRepo;
     @GetMapping("/registration")
     public String registration(){
-        return "registration";
+        return "common/registration";
     }
 
     @PostMapping("/registration")
@@ -26,7 +26,7 @@ public class RegistrationController {
 
         if(userFromDb != null){
             model.put("message", "This username already exists!");
-            return "registration";
+            return "common/registration";
         }
 
         user.setActive(true);
