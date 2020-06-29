@@ -1,6 +1,5 @@
 <#macro login path isRegisterForm>
 
-
     <div class="card text-center shadow p-3 mb-3 bg-white rounded mx-auto align-middle" style="width: 18rem; margin-top:20%">
         <h2 class="text" style="margin-top: 1%; color: #FFCA73"><b>Note</b><span class="text" style="margin-top: 1%; color: #6E6363"><b>App</b></span></h2>
         <h6 class="text font-weight-normal" style="margin-top: -1%; color: #242421">Let's take a note</h6>
@@ -24,7 +23,7 @@
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <!--Гиперссылка на страницу регистрации-->
                 <#if !isRegisterForm><a class="font-weight-light" href="/registration">Don't have an account? Sign up</a>
-                <#else><a class="font-weight-light" href="/login">Have got an account? Sign In</a>
+                <#else><a class="font-weight-light" href="/user-pg/login">Have got an account? Sign In</a>
                 </#if>
                 <br>
                 <br>
@@ -40,6 +39,6 @@
 
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-primary" type="submit">Sign Out</button>
+        <button class="btn btn-sm btn-outline-danger " type="submit">Выход</button>
     </form>
 </#macro>

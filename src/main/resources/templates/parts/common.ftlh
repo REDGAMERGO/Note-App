@@ -1,4 +1,3 @@
-
 <#macro page>
     <!DOCTYPE html>
     <html lang="en">
@@ -10,10 +9,10 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/main_style.css">
     </head>
     <body style="background: #FFCA73">
-    <#include "navbar.ftlh">
-    <div class="container mt-5">
+    <div class="container-fluid">
         <#nested>
     </div>
     <!-- Optional JavaScript -->

@@ -1,84 +1,29 @@
 <#import "parts/common.ftlh" as c>
+<#include "parts/security.ftlh">
 
 <@c.page>
 
-
-    <!--Раздел категорий-->
-    <table class="table table-bordered" >
-        <thead>
-            <tr>
-                <th>Категория</th>
-                <th>Пользователь</th>
-            </tr>
-        </thead>
-        <tbody>
-                <#list categories as category>
-                    <tr>
-                        <td> ${category.getName()}</td>
-                        <td> ${category.getAuthor().getUsername()}</td>
-                    </tr>
-                <#else>
-                        No notes
-                </#list>
-        <tbody>
-    </table>
-
-<br>
-    <div>
-        <form method="post" action="addCategory">
-            <input type="text" name="name" placeholder="Введите название" />
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button type="submit">Добавить</button>
-        </form>
+    <div class="row no-gutters">
+        <div  class="col" style="background: #6E6363"></div>
+        <div  class="col-auto" style="background: rosybrown">
+            <#include "parts/navbar.ftlh">
+        </div>
+        <div  class="col" style="background: dimgray"></div>
     </div>
 
 
-    <!--Раздел заметок-->
-    <br>
 
-    <table class="table table-bordered" >
-        <tr>
-            <th>Текст</th>
-            <th>Категория</th>
-            <th>Пользователь</th>
-            <th>Дата</th>
-        </tr>
-        <tr>
-            <#list notes as note>
-                <tr>
-                    <td>${note.getText()}</td>
-                    <td>${note.category.getName()}</td>
-                    <td>${note.getAuthor().getUsername()}</td>
-                    <td>${note.getTime()}</td>
-                </tr>
-            <#else>
-                    No notes
-            </#list>
+    <div class="row no-gutters" style="padding-top: 30px">
 
-        </tr>
-    </table>
+        <div class="col" style="width: 200px; background: darkorchid"></div>
 
-    <br>
-    <div>
-        <form method="post" action="addNote">
-            <input type="text" name="text" placeholder="Текст заметки" />
+        <div class="col-auto" style="background: darkolivegreen">
+            <div class="desk-panel">
+            </div>
 
-            <tr>
-                <td>
-                    <select name="category" required>
-                            <#list categories! as category>
-                                <option value="${category.getId()}">
-                                    "${category.getName()}"
-                                </option>
-                            </#list>
-                    </select>
-                </td>
-            </tr>
+        </div>
+        <div class="col" style="background: cadetblue"></div>
 
-            <!--<input type="text" name="category" placeholder="Категория">-->
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button type="submit">Добавить</button>
-        </form>
     </div>
 
 

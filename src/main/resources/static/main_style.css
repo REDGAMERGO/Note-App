@@ -1,0 +1,24 @@
+.nav-panel{
+    margin-top: 100px;
+    width: 1350px;
+    color: #6E6363;
+}
+
+
+.desk-panel{
+    height: 700px;
+    width: 1350px;
+    background: whitesmoke;
+    color: #6E6363;
+}
+
+/*Удаление пробелов между колонками*/
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    > .col,
+    > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+    }
+}
