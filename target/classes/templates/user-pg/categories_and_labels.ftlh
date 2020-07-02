@@ -14,35 +14,39 @@
                     <#list categories as category>
                         <#if category.getAuthor().getId() == currentUserId>
                             <a class="list-group-item list-group-item rounded-0">
-                                ${category.getName()}
-                                <div class="custom-control-inline" style="margin-left: 130px">
-
-                                    <div class="btn-group" style="width: 40px; margin-right: 10px">
-                                        <button class="btn btn-sm btn-outline-primary badge-pill nav-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 95px">
-                                            Изменить
-                                        </button>
-                                        <div class="dropdown-menu" style="width:220px">
-                                            <form method="post" action="/update-category" style="width: 150px;">
-                                                <div style="padding-left: 10px; padding-top: 2px">
-                                                    <input class="rounded border" type="text" style="width: 196px" name="name" value="${category.getName()}">
-                                                </div>
-                                                <input type="hidden" name="category_id" value="${category.getId()}">
-                                                <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                                                <div style="padding-left: 115px; padding-top: 6px">
-                                                    <button class="btn btn-sm btn-success" style="width: 90px; size: auto">Сохранить</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                <div class="custom-control-inline">
+                                    <div class="text-truncate"  style="width: 200px; border: none; ">
+                                        ${category.getName()}
                                     </div>
+                                    <div class="custom-control-inline" style="margin-left: 20px">
 
-                                    <form method="get" action="/remove-category" style="width: 40px; margin-left: 60px">
-                                        <input type="hidden" name="category_id" value=${category.getId()}>
-                                        <div>
-                                            <button class="btn btn-sm btn-outline-danger badge-pill" style="width: 90px;">
-                                                Удалить
+                                        <div class="btn-group" style="width: 40px; margin-right: 10px">
+                                            <button class="btn btn-sm btn-outline-primary badge-pill nav-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 95px">
+                                                Изменить
                                             </button>
+                                            <div class="dropdown-menu" style="width:220px">
+                                                <form method="post" action="/update-category" style="width: 150px;">
+                                                    <div style="padding-left: 10px; padding-top: 2px">
+                                                        <input class="rounded border" type="text" style="width: 196px" name="name" value="${category.getName()}">
+                                                    </div>
+                                                    <input type="hidden" name="category_id" value="${category.getId()}">
+                                                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                                    <div style="padding-left: 115px; padding-top: 6px">
+                                                        <button class="btn btn-sm btn-success" style="width: 90px; size: auto">Сохранить</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </form>
+
+                                        <form method="get" action="/remove-category" style="width: 40px; margin-left: 60px">
+                                            <input type="hidden" name="category_id" value=${category.getId()}>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-danger badge-pill" style="width: 90px;">
+                                                    Удалить
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </a>
                         </#if>
@@ -78,33 +82,35 @@
                     <#list labels as label>
                         <#if label.getAuthor().getId() == currentUserId>
                             <a class="list-group-item list-group-item rounded-0 ">
-                                <swap class="text-truncate">
-                                    ${label.getName()}
-                                </swap>
-                                <div class="custom-control-inline" style="margin-left: 180px">
-                                    <div class="btn-group" style="width: 40px; margin-right: 10px">
-                                        <button class="btn btn-sm btn-outline-primary badge-pill nav-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 95px">
-                                            Изменить
-                                        </button>
-                                        <div class="dropdown-menu" style="width:220px">
-                                            <form method="post" action="/update-label" style="width: 150px;">
-                                                <div style="padding-left: 10px; padding-top: 2px">
-                                                    <input class="rounded border" type="text" style="width: 196px" name="name" value="${label.getName()}">
-                                                </div>
-                                                <input type="hidden" name="label_id" value="${label.getId()}">
-                                                <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                                                <div style="padding-left: 115px; padding-top: 6px">
-                                                    <button class="btn btn-sm btn-success" style="width: 90px; size: auto">Сохранить</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                <div class="custom-control-inline">
+                                    <div class="text-truncate"  style="width: 220px; border: none;">
+                                        ${label.getName()}
                                     </div>
-                                    <form method="get" action="/remove-label" style="width: 40px; margin-left: 60px">
-                                        <input type="hidden" name="label_id" value=${label.getId()}>
-                                        <div>
-                                            <button class="btn btn-sm btn-outline-danger badge-pill"  style="width: 90px;">Удалить</button>
+                                    <div class="custom-control-inline" style="margin-left: 20px">
+                                        <div class="btn-group" style="width: 40px; margin-right: 10px">
+                                            <button class="btn btn-sm btn-outline-primary badge-pill nav-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 95px">
+                                                Изменить
+                                            </button>
+                                            <div class="dropdown-menu" style="width:220px">
+                                                <form method="post" action="/update-label" style="width: 150px;">
+                                                    <div style="padding-left: 10px; padding-top: 2px">
+                                                        <input class="rounded border" type="text" style="width: 196px" name="name" value="${label.getName()}">
+                                                    </div>
+                                                    <input type="hidden" name="label_id" value="${label.getId()}">
+                                                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                                    <div style="padding-left: 115px; padding-top: 6px">
+                                                        <button class="btn btn-sm btn-success" style="width: 90px; size: auto">Сохранить</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </form>
+                                        <form method="get" action="/remove-label" style="width: 40px; margin-left: 60px">
+                                            <input type="hidden" name="label_id" value=${label.getId()}>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-danger badge-pill"  style="width: 90px;">Удалить</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </a>
                         </#if>
