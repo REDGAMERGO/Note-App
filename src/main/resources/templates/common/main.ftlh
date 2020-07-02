@@ -1,30 +1,5 @@
-<#import "../parts/common.ftlh" as c>
-<#include "../parts/security.ftlh">
+<#import "../parts/main.ftlh" as m>
 
-<@c.page>
+<@m.page>
 
-    <div class="row no-gutters">
-        <div  class="col"></div>
-        <div  class="col-auto">
-            <#include "../parts/navbar.ftlh">
-        </div>
-        <div  class="col"></div>
-    </div>
-
-
-
-    <div class="row no-gutters" style="padding-top: 30px">
-
-        <div class="col" style="width: 200px;"></div>
-
-        <div class="col-auto">
-            <div class="desk-panel shadow-sm">
-            </div>
-
-        </div>
-        <div class="col"></div>
-
-    </div>
-
-
-</@c.page>
+</@m.page>

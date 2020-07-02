@@ -1,6 +1,6 @@
 package org.reallume.repos;
 
-import org.reallume.domain.Note;
+import org.reallume.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.reallume.domain.Category;
 
@@ -12,6 +12,13 @@ public interface CategoryRepo extends CrudRepository<Category, Long> {
 
     Category findById(Integer category_id);
 
-    void deleteById(Integer item_id);
+    void deleteByIdAndAuthor(Integer category_id, User author);
+
+    Category findByIdAndAuthor(Integer category_id, User author);
+
+    void deleteById(Integer category_id);
+
+
+
 
 }

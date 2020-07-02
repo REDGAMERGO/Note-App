@@ -1,10 +1,11 @@
 package org.reallume.domain;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Category {
+public class Label {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -19,10 +20,10 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Note> notes;
 
-    public Category() {
+    public Label() {
     }
 
-    public Category(String name, User author) {
+    public Label(String name, User author) {
         this.name = name;
         this.author = author;
     }
@@ -43,6 +44,6 @@ public class Category {
 
     public void setNotes(Set<Note> notes) { this.notes = notes; }
 
-    public Category getSelf() { return this;}
+    public Label getSelf() { return this;}
 
 }

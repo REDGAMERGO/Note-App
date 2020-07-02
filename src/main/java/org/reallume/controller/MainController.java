@@ -37,43 +37,4 @@ public class MainController {
         return "common/main";
     }
 
-
-    @PostMapping("addNote")
-    public String addNote(@AuthenticationPrincipal User user,
-                          @RequestParam String text,
-                          @RequestParam Integer category, Map<String, Object> model) {
-
-        if (text != null && !text.isEmpty() && user != null) {
-
-            Note note = new Note(text, categoryRepo.findById(category), user);
-
-            noteRepo.save(note);
-
-            Iterable<Note> notes = noteRepo.findAll();
-
-            model.put("notes", notes);
-
-        }
-        return "redirect:/main";
-    }
-
-    @PostMapping("addCategory")
-    public String addCategory(@AuthenticationPrincipal User user,
-                              @RequestParam String name, Map<String, Object> model) {
-        if (name != null && !name.isEmpty() && user != null) {
-            Category category = new Category(name, user);
-
-            categoryRepo.save(category);
-
-            Iterable<Category> categories = categoryRepo.findAll();
-
-            model.put("categories", categories);
-
-        }
-        return "redirect:/main";
-
-
-    }
-
-
 }

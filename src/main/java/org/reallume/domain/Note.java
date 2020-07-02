@@ -9,6 +9,7 @@ public class Note {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
+    private String name;
     private String text;
     private Date time;
 
@@ -23,13 +24,18 @@ public class Note {
     public Note() {
     }
 
-    public Note(String text, Category category, User user) {
+    public Note(String name, String text, Category category, User user) {
+        this.name = name;
         this.text = text;
         this.category = category;
         this.time = new Date();
         this.author = user;
         this.category = category;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
 
     public void setText(String text) {
         this.text = text;

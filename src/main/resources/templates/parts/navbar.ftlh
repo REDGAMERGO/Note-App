@@ -23,10 +23,7 @@
                         <a class="nav-link" href="/main">Заметки</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/main">Категории</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main">Метки</a>
+                        <a class="nav-link" href="/categories_and_labels">Категории и метки</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/main">Найти</a>
